@@ -46,7 +46,7 @@ def video_frame_callback(frame: av.VideoFrame) -> av.VideoFrame:
 
         #image gray
         img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-        faces = face_classifier.detectMultiScale(img_gray, scaleFactor=1.1, minNeighbors=5,flags=cv2.CASCADE_SCALE_IMAGE)
+        faces = face_classifier.detectMultiScale(img_gray, scaleFactor=1.1, minSize=(200, 200), minNeighbors=5,flags=cv2.CASCADE_SCALE_IMAGE)
         
         for (x, y, w, h) in faces:
             cv2.rectangle(img=img, pt1=(x,y), pt2=(x+w, y+h), color=(255, 0, 0), thickness=2)
